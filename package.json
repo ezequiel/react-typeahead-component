@@ -1,0 +1,68 @@
+{
+  "name": "react-typeahead-component",
+  "description": "Typeahead, written using the React.js library.",
+  "author": "Ezequiel Rodriguez <ezequiel@yahoo.com>",
+  "version": "0.2.0",
+  "main": "./src/index.js",
+  "license": "MIT",
+  "bugs": "https://github.com/ezequiel/react-typeahead-component/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ezequiel/react-typeahead-component.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "typeahead",
+    "autocomplete",
+    "react-component",
+    "component"
+  ],
+  "files": [
+    "./dist/npm"
+  ],
+  "directories": {
+    "lib": "./src",
+    "example": "./example"
+  },
+  "scripts": {
+    "build": "browserify ./src/index.js -t reactify -t literalify -x react -s Typeahead -d",
+    "dist:dev": "npm --loglevel=silent run build > dist/react-typeahead-component.dev.js",
+    "dist:min": "npm --loglevel=silent run build -- -t [envify --NODE_ENV production] | uglifyjs -cmvb beautify=false,ascii_only=true - > dist/react-typeahead-component.min.js",
+    "test": "karma start",
+    "test:dev": "karma start --no-single-run --browsers Chrome",
+    "jsx": "jsx ./src ./dist/npm -x jsx -x js"
+  },
+  "peerDependencies": {
+    "react": ">=0.13.1 <1.0.0"
+  },
+  "devDependencies": {
+    "brfs": "^1.4.0",
+    "browserify": "^9.0.3",
+    "browserify-css": "^0.6.1",
+    "browserify-shim": "^3.8.6",
+    "envify": "^3.4.0",
+    "insert-css": "^0.2.0",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.1.2",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-cli": "^0.0.4",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "karma-opera-launcher": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-sinon-chai": "^0.3.0",
+    "literalify": "^0.4.0",
+    "mocha": "^2.2.4",
+    "react-tools": "^0.13.1",
+    "reactify": "^1.0.0",
+    "uglify-js": "^2.4.20",
+    "watchify": "^2.4.0"
+  },
+  "literalify": {
+    "react": "window.React || require('react')"
+  }
+}
