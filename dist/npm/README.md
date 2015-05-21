@@ -169,8 +169,10 @@ handleComplete: function(event, completedInputValue) {
 #### *function* onInputClick(*event*) ***optional***
 * Fires when the input element is clicked.
 
-#### *function* onKeyDown(*event*) ***optional***
-* Fires when a key down occurs on the input element.
+#### *function* onKeyDown(*event*, optionData, selectedIndex) ***optional***
+Fires when a key down occurs on the input element.
+It is also passed the currently selected option, and its index.
+If no option is selected, `optionData` is the input value, and `selectedIndex` is `-1`.
 
 #### *function* onKeyPress(*event*) ***optional***
 * Fires when a key press occurs on the input element.

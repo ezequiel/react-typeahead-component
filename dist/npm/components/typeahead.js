@@ -173,7 +173,6 @@ module.exports = React.createClass({
             props = _this.props,
             OptionTemplate = props.optionTemplate,
             selectedIndex = state.selectedIndex,
-            isHintVisible = state.isHintVisible,
             isDropdownVisible = state.isDropdownVisible,
             activeDescendantId = _this.activeDescendantId;
 
@@ -320,6 +319,9 @@ module.exports = React.createClass({
             input = _this.refs.input,
             isDropdownVisible = _this.state.isDropdownVisible,
             isHintVisible = _this.state.isHintVisible,
+            hasHandledKeyDown = false,
+            index,
+            optionData,
             dir;
 
         switch (key) {
@@ -359,6 +361,7 @@ module.exports = React.createClass({
 
                 if (isDropdownVisible) {
                     dir = key === 'ArrowUp' ? -1: 1;
+                    hasHandledKeyDown = true;
 
                     _this.navigate(dir, function() {
                         var selectedIndex = _this.state.selectedIndex,
@@ -377,6 +380,7 @@ module.exports = React.createClass({
                         }
 
                         props.onOptionChange(event, optionData, selectedIndex);
+                        props.onKeyDown(event, optionData, selectedIndex);
                     });
                 }
             }
@@ -384,7 +388,11 @@ module.exports = React.createClass({
             break;
         }
 
-        props.onKeyDown(event);
+        if (!hasHandledKeyDown) {
+            index = this.state.selectedIndex;
+            optionData = index < 0 ? props.inputValue : props.options[index];
+            props.onKeyDown(event, optionData, index);
+        }
     },
 
     handleOptionClick: function(selectedIndex, event) {
