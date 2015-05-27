@@ -26,9 +26,8 @@
     "example": "./example"
   },
   "scripts": {
-    "build": "browserify ./src/index.js -t reactify -t literalify -x react -s Typeahead -d",
-    "dist:dev": "npm --loglevel=silent run build > dist/react-typeahead-component.dev.js",
-    "dist:min": "npm --loglevel=silent run build -- -t [envify --NODE_ENV production] | uglifyjs -cmvb beautify=false,ascii_only=true - > dist/react-typeahead-component.min.js",
+    "dist:dev": "webpack --progress --colors --config webpack.dev.config.js",
+    "dist:min": "webpack --progress --colors --config webpack.min.config.js",
     "test": "karma start",
     "test:dev": "karma start --no-single-run --browsers Chrome",
     "jsx": "jsx ./src ./dist/npm -x jsx -x js"
@@ -37,12 +36,6 @@
     "react": ">=0.13.1 <1.0.0"
   },
   "devDependencies": {
-    "brfs": "^1.4.0",
-    "browserify": "^9.0.3",
-    "browserify-css": "^0.6.1",
-    "browserify-shim": "^3.8.6",
-    "envify": "^3.4.0",
-    "insert-css": "^0.2.0",
     "karma": "^0.12.31",
     "karma-browserify": "^4.1.2",
     "karma-chrome-launcher": "^0.1.7",
@@ -55,14 +48,9 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-safari-launcher": "^0.1.1",
     "karma-sinon-chai": "^0.3.0",
-    "literalify": "^0.4.0",
     "mocha": "^2.2.4",
+    "node-libs-browser": "^0.5.2",
     "react-tools": "^0.13.1",
-    "reactify": "^1.0.0",
-    "uglify-js": "^2.4.20",
-    "watchify": "^2.4.0"
-  },
-  "literalify": {
-    "react": "window.React || require('react')"
+    "webpack": "^1.9.10"
   }
 }
