@@ -28,7 +28,10 @@ module.exports = React.createClass({
             <span
                 role='status'
                 aria-live='polite'
-                className='react-typeahead-offscreen'
+                style={{
+                    left: '-9999px',
+                    position: 'absolute'
+                }}
             />
         );
     },

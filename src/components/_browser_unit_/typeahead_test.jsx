@@ -86,7 +86,6 @@ describe('Typeahead', function() {
             typeaheadInstance.hideDropdown();
 
             expect(typeaheadInstance.state.isDropdownVisible).to.be.false;
-            TestUtils.findRenderedDOMComponentWithClass(typeaheadInstance, 'react-typeahead-hidden');
         });
     });
 

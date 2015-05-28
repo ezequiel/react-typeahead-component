@@ -111,7 +111,11 @@ module.exports = React.createClass({
         var _this = this;
 
         return (
-            <div className={'react-typeahead-container ' + _this.props.className}>
+            <div
+                style={{
+                    position: 'relative'
+                }}
+                className={'react-typeahead-container ' + _this.props.className}>
                 {_this.renderInput()}
                 {_this.renderDropdown()}
                 {_this.renderAriaMessageForOptions()}
@@ -129,7 +133,11 @@ module.exports = React.createClass({
             inputDirection = getTextDirection(inputValue);
 
         return (
-            <div className='react-typeahead-input-container'>
+            <div
+                style={{
+                    position: 'relative'
+                }}
+                className='react-typeahead-input-container'>
                 <Input
                     ref='input'
                     role='combobox'
@@ -153,6 +161,10 @@ module.exports = React.createClass({
                     onKeyUp={props.onKeyUp}
                     onKeyPress={props.onKeyPress}
                     className={className + ' react-typeahead-usertext'}
+                    style={{
+                        position: 'absolute',
+                        background: 'transparent'
+                    }}
                 />
 
                 <Input
@@ -161,6 +173,10 @@ module.exports = React.createClass({
                     aria-hidden={true}
                     dir={inputDirection}
                     className={className + ' react-typeahead-hint'}
+                    style={{
+                        color: 'silver',
+                        WebkitTextFillColor: 'silver'
+                    }}
                     value={state.isHintVisible ? props.handleHint(inputValue, props.options) : null}
                 />
             </div>
@@ -184,9 +200,14 @@ module.exports = React.createClass({
             <ul id={_this.optionsId}
                 role='listbox'
                 aria-hidden={!isDropdownVisible}
-                className={
-                    'react-typeahead-options' + (!isDropdownVisible ? ' react-typeahead-hidden' : '')
-                }
+                style={{
+                    width: '100%',
+                    background: '#fff',
+                    position: 'absolute',
+                    boxSizing: 'border-box',
+                    display: isDropdownVisible ? 'block' : 'none'
+                }}
+                className='react-typeahead-options'
                 onMouseOut={this.handleMouseOut}>
                 {
                     props.options.map(function(data, index) {
