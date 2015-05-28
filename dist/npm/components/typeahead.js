@@ -50,7 +50,7 @@ module.exports = React.createClass({
                 return '';
             },
             getMessageForIncomingOptions: function() {
-                return '';
+                return 'Suggestions are available. Use up and down arrows to select.';
             }
         };
      },
@@ -111,7 +111,11 @@ module.exports = React.createClass({
         var _this = this;
 
         return (
-            React.createElement("div", {className: 'react-typeahead-container ' + _this.props.className},
+            React.createElement("div", {
+                style: {
+                    position: 'relative'
+                },
+                className: 'react-typeahead-container ' + _this.props.className},
                 _this.renderInput(),
                 _this.renderDropdown(),
                 _this.renderAriaMessageForOptions(),
@@ -129,7 +133,11 @@ module.exports = React.createClass({
             inputDirection = getTextDirection(inputValue);
 
         return (
-            React.createElement("div", {className: "react-typeahead-input-container"},
+            React.createElement("div", {
+                style: {
+                    position: 'relative'
+                },
+                className: "react-typeahead-input-container"},
                 React.createElement(Input, {
                     ref: "input",
                     role: "combobox",
@@ -152,7 +160,11 @@ module.exports = React.createClass({
                     onSelect: props.onSelect,
                     onKeyUp: props.onKeyUp,
                     onKeyPress: props.onKeyPress,
-                    className: className + ' react-typeahead-usertext'}
+                    className: className + ' react-typeahead-usertext',
+                    style: {
+                        position: 'absolute',
+                        background: 'transparent'
+                    }}
                 ),
 
                 React.createElement(Input, {
@@ -161,6 +173,10 @@ module.exports = React.createClass({
                     "aria-hidden": true,
                     dir: inputDirection,
                     className: className + ' react-typeahead-hint',
+                    style: {
+                        color: 'silver',
+                        WebkitTextFillColor: 'silver'
+                    },
                     value: state.isHintVisible ? props.handleHint(inputValue, props.options) : null}
                 )
             )
@@ -184,9 +200,14 @@ module.exports = React.createClass({
             React.createElement("ul", {id: _this.optionsId,
                 role: "listbox",
                 "aria-hidden": !isDropdownVisible,
-                className:
-                    'react-typeahead-options' + (!isDropdownVisible ? ' react-typeahead-hidden' : ''),
-
+                style: {
+                    width: '100%',
+                    background: '#fff',
+                    position: 'absolute',
+                    boxSizing: 'border-box',
+                    display: isDropdownVisible ? 'block' : 'none'
+                },
+                className: "react-typeahead-options",
                 onMouseOut: this.handleMouseOut},
 
                     props.options.map(function(data, index) {
@@ -217,11 +238,12 @@ module.exports = React.createClass({
     renderAriaMessageForOptions: function() {
         var _this = this,
             props = _this.props,
-            option = props.options[_this.state.selectedIndex] || props.inputValue;
+            inputValue = props.inputValue,
+            option = props.options[_this.state.selectedIndex] || inputValue;
 
         return (
             React.createElement(AriaStatus, {
-                message: props.getMessageForOption(option)}
+                message: props.getMessageForOption(option) || inputValue}
             )
         );
     },
@@ -414,9 +436,10 @@ module.exports = React.createClass({
     },
 
     handleWindowClose: function(event) {
-        var _this = this;
+        var _this = this,
+            target = event.target;
 
-        if (!React.findDOMNode(this).contains(event.target)) {
+        if (target !== window && !this.getDOMNode().contains(target)) {
             _this.hideHint();
             _this.hideDropdown();
         }
