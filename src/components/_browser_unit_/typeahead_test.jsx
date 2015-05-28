@@ -24,7 +24,7 @@ describe('Typeahead', function() {
                 );
 
             // Put Typeahead in a state where the hint is visible.
-            typeaheadInstance.handleChange();
+            typeaheadInstance.handleChange({ target: { value: '' } });
 
             // The hint should be visible at this point.
             expect(typeaheadInstance.state.isHintVisible).to.be.true;
@@ -180,7 +180,7 @@ describe('Typeahead', function() {
                     />
                 );
 
-            typeaheadInstance.handleChange();
+            typeaheadInstance.handleChange({ target: { value: '' } });
             expect(typeaheadInstance.state.isHintVisible).to.be.equal(true);
         });
 
@@ -189,7 +189,7 @@ describe('Typeahead', function() {
                     <Typeahead />
                 );
 
-            typeaheadInstance.handleChange();
+            typeaheadInstance.handleChange({ target: { value: '' } });
             expect(typeaheadInstance.state.isDropdownVisible).to.be.equal(true);
         });
 
@@ -198,7 +198,7 @@ describe('Typeahead', function() {
                     <Typeahead />
                 );
 
-            typeaheadInstance.handleChange();
+            typeaheadInstance.handleChange({ target: { value: '' } });
             expect(typeaheadInstance.state.selectedIndex).to.be.equal(-1);
         });
 
@@ -210,7 +210,7 @@ describe('Typeahead', function() {
                     />
                 );
 
-            typeaheadInstance.handleChange();
+            typeaheadInstance.handleChange({ target: { value: '' } });
             expect(handleChange).to.have.been.called.once;
         });
 
@@ -222,7 +222,10 @@ describe('Typeahead', function() {
                     />
                 ),
                 eventData = {
-                    timestamp: Date.now()
+                    timestamp: Date.now(),
+                    target: {
+                        value: ''
+                    }
                 };
 
             typeaheadInstance.handleChange(eventData);
@@ -370,7 +373,7 @@ describe('Typeahead', function() {
                     );
 
                 // Put Typeahead in a state where the hint and dropdown is visible.
-                typeaheadInstance.handleChange();
+                typeaheadInstance.handleChange({ target: { value: '' } });
 
                 ['Tab', 'End'].forEach(function(key) {
                     var preventDefault = sinon.spy(),
@@ -403,7 +406,10 @@ describe('Typeahead', function() {
                         eventData = {
                             key: key,
                             timestamp: Date.now(),
-                            preventDefault: preventDefault
+                            preventDefault: preventDefault,
+                            target: {
+                                value: ''
+                            }
                         };
 
                     typeaheadInstance.handleKeyDown(eventData);
@@ -425,7 +431,11 @@ describe('Typeahead', function() {
                     );
 
                 // Put Typeahead in a state where the hint and dropdown is visible.
-                typeaheadInstance.handleChange(event);
+                typeaheadInstance.handleChange({
+                    target: {
+                        value: ''
+                    }
+                });
 
                 ['Tab', 'End'].forEach(function(key) {
                     var preventDefault = sinon.spy(),
@@ -455,7 +465,7 @@ describe('Typeahead', function() {
                     );
 
                 // Put Typeahead in a state where the hint and dropdown is visible.
-                typeaheadInstance.handleChange();
+                typeaheadInstance.handleChange({ target: { value: '' } });
 
                 ['Tab', 'End'].forEach(function(key) {
                     var preventDefault = sinon.spy(),
@@ -501,7 +511,7 @@ describe('Typeahead', function() {
                         endRange = inputValue.length
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     // The cursor must be at the end to be completeable.
                     inputDOMNode.setSelectionRange(startRange, endRange);
@@ -534,7 +544,7 @@ describe('Typeahead', function() {
                         endRange = Math.floor(inputValue.length / 2);
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     inputDOMNode.setSelectionRange(startRange, endRange);
 
@@ -580,7 +590,7 @@ describe('Typeahead', function() {
                         };
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     typeaheadInstance.handleKeyDown(eventData);
                     expect(handleComplete).to.have.not.been.calledWith(eventData, 'شزذيثب');
@@ -603,7 +613,7 @@ describe('Typeahead', function() {
                     };
 
                 // Put Typeahead in a state where the hint and dropdown is visible.
-                typeaheadInstance.handleChange();
+                typeaheadInstance.handleChange({ target: { value: '' } });
 
                 typeaheadInstance.handleKeyDown(eventData);
                 expect(handleComplete).to.have.not.been.calledWith(eventData, 'ezequiel');
@@ -640,7 +650,7 @@ describe('Typeahead', function() {
 
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     // The cursor must be at the end to be completeable.
                     inputDOMNode.setSelectionRange(startRange, endRange);
@@ -676,7 +686,7 @@ describe('Typeahead', function() {
                         endRange = Math.floor(inputValue.length / 2);
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     inputDOMNode.setSelectionRange(startRange, endRange);
 
@@ -721,7 +731,7 @@ describe('Typeahead', function() {
                         };
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     typeaheadInstance.handleKeyDown(eventData);
                     expect(handleComplete).to.have.not.been.calledWith(eventData, 'ezequiel');
@@ -744,7 +754,7 @@ describe('Typeahead', function() {
                     };
 
                 // Put Typeahead in a state where the hint and dropdown is visible.
-                typeaheadInstance.handleChange();
+                typeaheadInstance.handleChange({ target: { value: '' } });
 
                 typeaheadInstance.handleKeyDown(eventData);
                 expect(handleComplete).to.have.not.been.calledWith(eventData, 'شزذيثب');
@@ -770,7 +780,7 @@ describe('Typeahead', function() {
                     };
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     typeaheadInstance.handleKeyDown(eventData);
 
@@ -796,7 +806,7 @@ describe('Typeahead', function() {
                     };
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     typeaheadInstance.handleKeyDown(eventData);
 
@@ -833,7 +843,7 @@ describe('Typeahead', function() {
                         };
 
                     // Put Typeahead in a state where the hint and dropdown is visible.
-                    typeaheadInstance.handleChange();
+                    typeaheadInstance.handleChange({ target: { value: '' } });
 
                     typeaheadInstance.handleKeyDown(eventData);
 
@@ -1080,7 +1090,7 @@ describe('Typeahead', function() {
                 );
 
            // Put Typeahead in a state where the hint and dropdown is visible.
-           typeaheadInstance.handleChange();
+           typeaheadInstance.handleChange({ target: { value: '' } });
 
             typeaheadInstance.handleWindowClose({
                 // Pretend this object is a DOM node we know nothing about.
