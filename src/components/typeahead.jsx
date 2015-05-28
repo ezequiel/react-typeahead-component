@@ -436,9 +436,10 @@ module.exports = React.createClass({
     },
 
     handleWindowClose: function(event) {
-        var _this = this;
+        var _this = this,
+            target = event.target;
 
-        if (!React.findDOMNode(this).contains(event.target)) {
+        if (target !== window && !this.getDOMNode().contains(target)) {
             _this.hideHint();
             _this.hideDropdown();
         }
