@@ -50,7 +50,7 @@ module.exports = React.createClass({
                 return '';
             },
             getMessageForIncomingOptions: function() {
-                return '';
+                return 'Suggestions are available. Use up and down arrows to select.';
             }
         };
      },
@@ -238,11 +238,12 @@ module.exports = React.createClass({
     renderAriaMessageForOptions: function() {
         var _this = this,
             props = _this.props,
-            option = props.options[_this.state.selectedIndex] || props.inputValue;
+            inputValue = props.inputValue,
+            option = props.options[_this.state.selectedIndex] || inputValue;
 
         return (
             <AriaStatus
-                message={props.getMessageForOption(option)}
+                message={props.getMessageForOption(option) || inputValue}
             />
         );
     },
