@@ -28,6 +28,8 @@ module.exports = React.createClass({
         onComplete: React.PropTypes.func,
         onOptionClick: React.PropTypes.func,
         onOptionChange: React.PropTypes.func,
+        onDropdownOpen: React.PropTypes.func,
+        onDropdownClose: React.PropTypes.func,
         optionTemplate: React.PropTypes.func.isRequired,
         getMessageForOption: React.PropTypes.func,
         getMessageForIncomingOptions: React.PropTypes.func
@@ -47,6 +49,8 @@ module.exports = React.createClass({
             onOptionClick: noop,
             onOptionChange: noop,
             onComplete:  noop,
+            onDropdownOpen: noop,
+            onDropdownClose: noop,
             getMessageForOption: function() {
                 return '';
             },
@@ -259,15 +263,27 @@ module.exports = React.createClass({
     },
 
     showDropdown: function() {
-        this.setState({
-            isDropdownVisible: true
-        });
+        var _this = this;
+
+        if (!_this.state.isDropdownVisible) {
+            _this.setState({
+                isDropdownVisible: true
+            }, function() {
+                _this.props.onDropdownOpen();
+            });
+        }
     },
 
     hideDropdown: function() {
-        this.setState({
-            isDropdownVisible: false
-        });
+        var _this = this;
+
+        if (_this.state.isDropdownVisible) {
+            _this.setState({
+                isDropdownVisible: false
+            }, function() {
+                _this.props.onDropdownClose();
+            });
+        }
     },
 
     showHint: function() {
