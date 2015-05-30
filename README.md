@@ -147,6 +147,11 @@ Fires when the user is attempting to complete the input element's hint. If there
 
 This function is called when the user presses the `ArrowRight`, `Tab`, or `End` keys. `ArrowLeft` is used instead of `ArrowRight` **if** the input value is RTL.
 
+#### *function* onDropdownOpen() ***optional***
+* Fires when the dropdown is opened. The dropdown opens as soon as something is typed, or up/down arrow keys are pressed, or when the input is focused.
+
+#### *function* onDropdownClose() ***optional***
+* Fires when the dropdown is closed. The dropdown may be closed when `Escape` or `Enter` is pressed, or if any option is clicked on, or if anywhere outside the Typeahead is clicked.
 
 **Example**:
 
@@ -182,6 +187,9 @@ If no option is selected, `optionData` is the input value, and `selectedIndex` i
 
 #### *function* onFocus(*event*) ***optional***
 * Fires when the input element is focused.
+
+#### *function* onBlur(*event*) ***optional***
+* Fires when the input element is blurred.
 
 #### *function* onBlur(*event*) ***optional***
 * Fires when the input element is blurred.
