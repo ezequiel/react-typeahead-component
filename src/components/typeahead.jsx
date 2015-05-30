@@ -21,6 +21,7 @@ module.exports = React.createClass({
         onKeyPress: React.PropTypes.func,
         onKeyUp: React.PropTypes.func,
         onFocus: React.PropTypes.func,
+        onBlur: React.PropTypes.func,
         onSelect: React.PropTypes.func,
         onInputClick: React.PropTypes.func,
         handleHint: React.PropTypes.func,
@@ -152,6 +153,7 @@ module.exports = React.createClass({
                     dir={inputDirection}
                     onClick={_this.handleClick}
                     onFocus={_this.handleFocus}
+                    onBlur={props.onBlur}
                     onChange={_this.handleChange}
                     onKeyDown={_this.handleKeyDown}
                     id={props.inputId}
