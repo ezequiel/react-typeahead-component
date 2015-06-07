@@ -1,4 +1,5 @@
 var cx = require('classnames');
+var React = require('react');
 
 module.exports = React.createClass({
     displayName: 'OptionTemplate',

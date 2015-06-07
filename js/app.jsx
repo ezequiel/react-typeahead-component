@@ -2,6 +2,8 @@ var OptionStore = require('./stores/OptionStore');
 var OptionActions = require('./actions/OptionActions');
 var OptionTemplate = require('./components/OptionTemplate.jsx');
 var throttle = require('lodash.throttle');
+var React = require('react');
+var Typeahead = require('react-typeahead-component');
 
 var MyApp = React.createClass({
     getInitialState: function() {
