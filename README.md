@@ -12,6 +12,10 @@ Features
 * Auto-closing dropdown for the options list.
 * **5KB minified+gzipped!**
 
+Demo
+=============
+http://ezequiel.github.io/react-typeahead-component/
+
 Examples
 --------
 
