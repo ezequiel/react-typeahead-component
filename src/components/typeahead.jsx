@@ -323,6 +323,10 @@ module.exports = React.createClass({
         _this.userInputValue = event.target.value;
     },
 
+    focus: function() {
+        this.refs.input.getDOMNode().focus();
+    },
+
     handleFocus: function(event) {
         var _this = this;
 
