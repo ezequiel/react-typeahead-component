@@ -1,0 +1,22 @@
+{
+  "name": "react-typeahead-netflix-example",
+  "version": "0.1.0",
+  "description": "Netflix's autocomplete widget, written using react-typeahead-component.",
+  "main": "app.jsx",
+  "scripts": {
+    "start": "watchify js/app.jsx -t reactify -o js/bundle.js -v -d"
+  },
+  "author": "Ezequiel Rodriguez",
+  "license": "MIT",
+  "devDependencies": {
+    "classnames": "^2.1.1",
+    "events": "^1.0.2",
+    "flux": "^2.0.3",
+    "jsonp": "^0.2.0",
+    "keymirror": "^0.1.1",
+    "lodash.throttle": "^3.0.2",
+    "object-assign": "^2.0.0",
+    "reactify": "^1.1.1",
+    "watchify": "^3.2.1"
+  }
+}

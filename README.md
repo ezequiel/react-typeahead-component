@@ -19,7 +19,11 @@ http://ezequiel.github.io/react-typeahead-component/
 Examples
 --------
 
-**YouTube's Autocomplete widget**. It uses the [Flux application architecture](https://facebook.github.io/flux/) in conjunction with YouTube's API.
+**A Netflix autocomplete widget**. It uses the [Flux application architecture](https://facebook.github.io/flux/) in conjunction with Netflix's API. It takes from Netflix's latest layout redesign.
+
+![netflix](https://cloud.githubusercontent.com/assets/368069/8123520/ed4419e8-107f-11e5-8134-d13c22fcf5d2.gif)
+
+**YouTube's Autocomplete widget**. It also uses the [Flux application architecture](https://facebook.github.io/flux/) in conjunction with YouTube's API.
 
 ![youtube11](https://cloud.githubusercontent.com/assets/368069/7670388/3ab8d8ae-fc57-11e4-8fc1-7ff020e76bf1.gif)
 
