@@ -11,25 +11,27 @@ var MyApp = React.createClass({
     },
 
     componentWillMount: function() {
-        var inputChanges = this.inputChanges = new Rx.Subject();
+        var inputChanges = new Rx.Subject();
+
+        this.inputChanges = inputChanges;
         this.handleChange = inputChanges.onNext.bind(inputChanges);
 
-        inputChanges
-            .map(function(event) {
-                return event.target.value;
-            })
+        var inputValues = inputChanges.map(function(event) {
+            return event.target.value;
+        });
+
+        inputValues
             .subscribe(this.setInputValue);
 
-        inputChanges
-            .map(function(event) {
-                return event.target.value;
-            })
+        inputValues
             .debounce(250)
             .flatMapLatest(function(inputValue) {
                 return (
                     OptionWebAPIUtils
                         .fetchOptions(inputValue)
                         .retry(2)
+                        // Completes the collection at this point
+                        // if there is a new input value.
                         .takeUntil(inputChanges)
                 );
             })
@@ -82,7 +84,6 @@ var MyApp = React.createClass({
     },
 
     setOptions: function(options) {
-        console.log('setting options...');
         this.setState({
             options: options
         });
