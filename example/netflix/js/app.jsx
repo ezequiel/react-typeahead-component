@@ -1,7 +1,6 @@
-var OptionStore = require('./stores/OptionStore');
-var OptionActions = require('./actions/OptionActions');
 var OptionTemplate = require('./components/OptionTemplate.jsx');
-var throttle = require('lodash.throttle');
+var OptionWebAPIUtils = require('./utils/OptionWebAPIUtils');
+var Rx = require('rx');
 
 var MyApp = React.createClass({
     getInitialState: function() {
@@ -12,11 +11,33 @@ var MyApp = React.createClass({
     },
 
     componentWillMount: function() {
-        OptionStore.on('change', this.handleStoreChange);
+        var inputChanges = this.inputChanges = new Rx.Subject();
+        this.handleChange = inputChanges.onNext.bind(inputChanges);
+
+        inputChanges
+            .map(function(event) {
+                return event.target.value;
+            })
+            .subscribe(this.setInputValue);
+
+        inputChanges
+            .map(function(event) {
+                return event.target.value;
+            })
+            .debounce(250)
+            .flatMapLatest(function(inputValue) {
+                return (
+                    OptionWebAPIUtils
+                        .fetchOptions(inputValue)
+                        .retry(2)
+                        .takeUntil(inputChanges)
+                );
+            })
+            .subscribe(this.setOptions);
     },
 
     componentWillUnmount: function() {
-        OptionStore.removeListener('change', this.handleStoreChange);
+        this.inputChanges.dispose();
     },
 
     render: function() {
@@ -61,18 +82,11 @@ var MyApp = React.createClass({
     },
 
     setOptions: function(options) {
+        console.log('setting options...');
         this.setState({
             options: options
         });
     },
-
-    handleChange: function(event) {
-        var value = event.target.value;
-        this.setInputValue(value);
-        this.getOptions(value);
-    },
-
-    getOptions: throttle(OptionActions.getOptions, 300),
 
     handleOptionChange: function(event, option) {
         this.setInputValue(option.value || option);
@@ -86,10 +100,6 @@ var MyApp = React.createClass({
         this.setInputValue('');
         this.setOptions([]);
         this.refs.typeahead.focus();
-    },
-
-    handleStoreChange: function(newOptions) {
-        this.setOptions(newOptions);
     }
 });
 

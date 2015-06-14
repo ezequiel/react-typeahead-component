@@ -10,13 +10,9 @@
   "license": "MIT",
   "devDependencies": {
     "classnames": "^2.1.1",
-    "events": "^1.0.2",
-    "flux": "^2.0.3",
     "jsonp": "^0.2.0",
-    "keymirror": "^0.1.1",
-    "lodash.throttle": "^3.0.2",
-    "object-assign": "^2.0.0",
     "reactify": "^1.1.1",
+    "rx": "^2.5.3",
     "watchify": "^3.2.1"
   }
 }

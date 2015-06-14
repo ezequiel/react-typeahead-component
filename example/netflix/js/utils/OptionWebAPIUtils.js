@@ -1,3 +1,4 @@
+var Rx = require('rx');
 var JSONP = require('jsonp');
 var NETFLIX_API_ENDPOINT = "http://dvd.netflix.com/JSON/AutoCompleteSearch?type=grouped";
 
@@ -7,7 +8,7 @@ var cache = {
 
 module.exports = {
     fetchOptions: function(query) {
-        return new Promise(function(resolve, reject) {
+        return Rx.Observable.fromPromise(new Promise(function(resolve, reject) {
             var result = cache[query], url;
 
             if (result !== undefined) {
@@ -63,6 +64,6 @@ module.exports = {
                     }
                 });
             }
-        });
+        }));
     }
 };

@@ -3,7 +3,9 @@ Netflix typeahead widget, written using react-typeahead-component.
 
 ![netflix](https://cloud.githubusercontent.com/assets/368069/8123520/ed4419e8-107f-11e5-8134-d13c22fcf5d2.gif)
 
-This example uses the [Flux application architecture](https://facebook.github.io/flux/) in conjunction with Netflix's API.
+It uses the [`RxJs`](http://reactive-extensions.github.io/RxJS/) in conjunction with Netflix's API.
+
+It also takes from Netflix's newest layout redesign.
 
 ## Running
 
