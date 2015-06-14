@@ -14,7 +14,11 @@ Features
 
 Demo
 =============
-http://ezequiel.github.io/react-typeahead-component/
+**YouTube**
+http://ezequiel.github.io/react-typeahead-component/youtube
+
+**Netflix**
+http://ezequiel.github.io/react-typeahead-component/netflix
 
 Examples
 --------
