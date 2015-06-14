@@ -1,0 +1,106 @@
+.netflix-typeahead-container {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    background: black;
+    border: solid 1px rgba(255,255,255,.85);
+    width: 265px;
+    position: relative !important;
+}
+
+.netflix-typeahead-container .icon-search {
+    color: #fff;
+    padding: 0 6px;
+}
+
+.netflix-typeahead-container .icon-remove {
+    color: #fff;
+    cursor: pointer;
+    margin-right: 6px;
+    padding: 0;
+    font-size: 13px;
+    border: none;
+    background: none;
+    outline: none;
+
+}
+
+.netflix-typeahead-container .icon-remove:focus,
+.netflix-typeahead-container .icon-remove:hover {
+    color: #e50914;
+}
+
+body {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.netflix-typeahead-container input {
+    color: #fff;
+    background: 0 0;
+    border: none;
+    padding: 7px 14px 7px 7px;
+    font-size: 14px;
+    width: 212px;
+    outline: 0;
+}
+
+.react-typeahead-options {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border: solid 1px rgba(255,255,255,.85);
+    cursor: default;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background: black !important;
+    color: #fff;
+    font-size: 15px;
+    border-top: none;
+    margin-top: 1px;
+    width: 267px !important;
+    margin-left: -29px;
+}
+
+.react-typeahead-options li {
+    padding: 4px 14px 4px 7px;
+}
+
+@font-face {
+    font-family: 'nf-icon';
+    src: url('http://cdn.nflximg.com/ffe/siteui/fonts/nf-icon-v1-57.svg#nf-icon-v1-57') format('svg'),url('http://cdn.nflximg.com/ffe/siteui/fonts/nf-icon-v1-57.eot?#iefix') format('embedded-opentype'),url('http://cdn.nflximg.com/ffe/siteui/fonts/nf-icon-v1-57.woff') format('woff'),url('http://cdn.nflximg.com/ffe/siteui/fonts/nf-icon-v1-57.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+[class^="icon-"],[class*=" icon-"] {
+    font-family: 'nf-icon';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+.icon-remove:before {
+    content: '\e863'
+}
+
+.icon-search:before {
+    content: '\e636'
+}
+
+.selected-option {
+    color: #e50914;
+}
+
+.option-header {
+    color: #999;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.option-value {
+    padding-left: 10px;
+}
