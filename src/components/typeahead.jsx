@@ -37,6 +37,7 @@ module.exports = React.createClass({
 
     getDefaultProps: function() {
         return {
+            className: '',
             inputValue: '',
             options: [],
             onFocus: noop,
@@ -146,6 +147,19 @@ module.exports = React.createClass({
                 }}
                 className='react-typeahead-input-container'>
                 <Input
+                    disabled={true}
+                    role='presentation'
+                    aria-hidden={true}
+                    dir={inputDirection}
+                    className={className + ' react-typeahead-hint'}
+                    style={{
+                        color: 'silver',
+                        WebkitTextFillColor: 'silver',
+                        position: 'absolute'
+                    }}
+                    value={state.isHintVisible ? props.handleHint(inputValue, props.options) : null}
+                />
+                <Input
                     ref='input'
                     role='combobox'
                     aria-owns={_this.optionsId}
@@ -170,22 +184,9 @@ module.exports = React.createClass({
                     onKeyPress={props.onKeyPress}
                     className={className + ' react-typeahead-usertext'}
                     style={{
-                        position: 'absolute',
+                        position: 'relative',
                         background: 'transparent'
                     }}
-                />
-
-                <Input
-                    disabled={true}
-                    role='presentation'
-                    aria-hidden={true}
-                    dir={inputDirection}
-                    className={className + ' react-typeahead-hint'}
-                    style={{
-                        color: 'silver',
-                        WebkitTextFillColor: 'silver'
-                    }}
-                    value={state.isHintVisible ? props.handleHint(inputValue, props.options) : null}
                 />
             </div>
         );
