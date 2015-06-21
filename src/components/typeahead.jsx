@@ -54,8 +54,10 @@ module.exports = React.createClass({
             getMessageForOption: function() {
                 return '';
             },
-            getMessageForIncomingOptions: function() {
-                return 'Suggestions are available. Use up and down arrows to select.';
+            getMessageForIncomingOptions: function(number) {
+                return (
+                    number + ' suggestions are available. Use up and down arrows to select.'
+                );
             }
         };
      },
@@ -221,6 +223,7 @@ module.exports = React.createClass({
 
                         return (
                             <li id={isSelected ? activeDescendantId : null}
+                                aria-selected={isSelected}
                                 role='option'
                                 key={index}
                                 onClick={_this.handleOptionClick.bind(_this, index)}
@@ -255,9 +258,11 @@ module.exports = React.createClass({
     },
 
     renderAriaMessageForIncomingOptions: function() {
+        var props = this.props;
+
         return (
             <AriaStatus
-                message={this.props.getMessageForIncomingOptions()}
+                message={props.getMessageForIncomingOptions(props.options.length)}
             />
         );
     },
