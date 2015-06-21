@@ -9,6 +9,7 @@
   "author": "Ezequiel Rodriguez",
   "license": "MIT",
   "devDependencies": {
+    "object-assign": "^3.0.0",
     "reactify": "^1.1.1",
     "watchify": "^3.2.1"
   },

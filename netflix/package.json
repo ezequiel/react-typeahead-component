@@ -16,7 +16,7 @@
     "classnames": "^2.1.1",
     "jsonp": "^0.2.0",
     "react": "^0.13.3",
-    "react-typeahead-component": "^0.5.0",
+    "react-typeahead-component": "^0.6.0",
     "rx": "^2.5.3"
   }
 }
