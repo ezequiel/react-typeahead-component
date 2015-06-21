@@ -37,6 +37,7 @@ module.exports = React.createClass({
 
     getDefaultProps: function() {
         return {
+            className: '',
             inputValue: '',
             options: [],
             onFocus: noop,
@@ -54,8 +55,10 @@ module.exports = React.createClass({
             getMessageForOption: function() {
                 return '';
             },
-            getMessageForIncomingOptions: function() {
-                return 'Suggestions are available. Use up and down arrows to select.';
+            getMessageForIncomingOptions: function(number) {
+                return (
+                    number + ' suggestions are available. Use up and down arrows to select.'
+                );
             }
         };
      },
@@ -144,6 +147,19 @@ module.exports = React.createClass({
                 },
                 className: "react-typeahead-input-container"},
                 React.createElement(Input, {
+                    disabled: true,
+                    role: "presentation",
+                    "aria-hidden": true,
+                    dir: inputDirection,
+                    className: className + ' react-typeahead-hint',
+                    style: {
+                        color: 'silver',
+                        WebkitTextFillColor: 'silver',
+                        position: 'absolute'
+                    },
+                    value: state.isHintVisible ? props.handleHint(inputValue, props.options) : null}
+                ),
+                React.createElement(Input, {
                     ref: "input",
                     role: "combobox",
                     "aria-owns": _this.optionsId,
@@ -168,22 +184,9 @@ module.exports = React.createClass({
                     onKeyPress: props.onKeyPress,
                     className: className + ' react-typeahead-usertext',
                     style: {
-                        position: 'absolute',
+                        position: 'relative',
                         background: 'transparent'
                     }}
-                ),
-
-                React.createElement(Input, {
-                    disabled: true,
-                    role: "presentation",
-                    "aria-hidden": true,
-                    dir: inputDirection,
-                    className: className + ' react-typeahead-hint',
-                    style: {
-                        color: 'silver',
-                        WebkitTextFillColor: 'silver'
-                    },
-                    value: state.isHintVisible ? props.handleHint(inputValue, props.options) : null}
                 )
             )
         );
@@ -221,6 +224,7 @@ module.exports = React.createClass({
 
                         return (
                             React.createElement("li", {id: isSelected ? activeDescendantId : null,
+                                "aria-selected": isSelected,
                                 role: "option",
                                 key: index,
                                 onClick: _this.handleOptionClick.bind(_this, index),
@@ -255,9 +259,11 @@ module.exports = React.createClass({
     },
 
     renderAriaMessageForIncomingOptions: function() {
+        var props = this.props;
+
         return (
             React.createElement(AriaStatus, {
-                message: this.props.getMessageForIncomingOptions()}
+                message: props.getMessageForIncomingOptions(props.options.length)}
             )
         );
     },
@@ -321,6 +327,10 @@ module.exports = React.createClass({
         _this.setSelectedIndex(-1);
         _this.props.onChange(event);
         _this.userInputValue = event.target.value;
+    },
+
+    focus: function() {
+        this.refs.input.getDOMNode().focus();
     },
 
     handleFocus: function(event) {
