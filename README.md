@@ -156,6 +156,9 @@ For example, this allows us to associate a label with the Typeahead's input elem
 #### *string* placeholder ***optional***
 * The input element's `placeholder` attribute.
 
+#### *string* hoverSelect ***optional***
+* By default, hovering over an option causes it to be selected.
+
 #### *function* onComplete(*event*, *completedInputValue*) ***optional***
 Fires when the user is attempting to complete the input element's hint. If there is no hint, it will not be called.
 

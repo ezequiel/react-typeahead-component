@@ -458,16 +458,19 @@ module.exports = React.createClass({
     },
 
     handleOptionMouseOver: function(selectedIndex) {
-        var _this = this,
-            props = _this.props;
+        var _this = this;
 
-        if (props.hoverSelect) {
-            this.setSelectedIndex(selectedIndex);
+        if (_this.props.hoverSelect) {
+            _this.setSelectedIndex(selectedIndex);
         }
     },
 
     handleMouseOut: function() {
-        this.setSelectedIndex(-1);
+        var _this = this;
+
+        if (_this.props.hoverSelect) {
+            _this.setSelectedIndex(-1);
+        }
     },
 
     handleWindowClose: function(event) {
