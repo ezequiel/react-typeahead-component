@@ -2,7 +2,7 @@
   "name": "react-typeahead-component",
   "description": "Typeahead, written using the React.js library.",
   "author": "Ezequiel Rodriguez <ezequiel@yahoo.com>",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "main": "index.js",
   "license": "MIT",
   "bugs": "https://github.com/ezequiel/react-typeahead-component/issues",

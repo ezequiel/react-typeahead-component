@@ -13,6 +13,7 @@ module.exports = React.createClass({
         inputId: React.PropTypes.string,
         className: React.PropTypes.string,
         autoFocus: React.PropTypes.bool,
+        hoverSelect: React.PropTypes.bool,
         inputValue: React.PropTypes.string,
         options: React.PropTypes.array,
         placeholder: React.PropTypes.string,
@@ -40,6 +41,7 @@ module.exports = React.createClass({
             className: '',
             inputValue: '',
             options: [],
+            hoverSelect: true,
             onFocus: noop,
             onKeyDown: noop,
             onChange: noop,
@@ -456,11 +458,19 @@ module.exports = React.createClass({
     },
 
     handleOptionMouseOver: function(selectedIndex) {
-        this.setSelectedIndex(selectedIndex);
+        var _this = this;
+
+        if (_this.props.hoverSelect) {
+            _this.setSelectedIndex(selectedIndex);
+        }
     },
 
     handleMouseOut: function() {
-        this.setSelectedIndex(-1);
+        var _this = this;
+
+        if (_this.props.hoverSelect) {
+            _this.setSelectedIndex(-1);
+        }
     },
 
     handleWindowClose: function(event) {

@@ -12,8 +12,22 @@ Features
 * Auto-closing dropdown for the options list.
 * **5KB minified+gzipped!**
 
+Demo
+=============
+**YouTube**
+http://ezequiel.github.io/react-typeahead-component/youtube
+
+**Netflix**
+http://ezequiel.github.io/react-typeahead-component/netflix
+
 Examples
 --------
+
+**A Netflix autocomplete widget**.
+
+It uses the [`RxJs`](http://reactive-extensions.github.io/RxJS/) in conjunction with Netflix's API. It also takes from Netflix's newest layout redesign.
+
+![netflix](https://cloud.githubusercontent.com/assets/368069/8123520/ed4419e8-107f-11e5-8134-d13c22fcf5d2.gif)
 
 **YouTube's Autocomplete widget**. It uses the [Flux application architecture](https://facebook.github.io/flux/) in conjunction with YouTube's API.
 
@@ -141,6 +155,9 @@ For example, this allows us to associate a label with the Typeahead's input elem
 
 #### *string* placeholder ***optional***
 * The input element's `placeholder` attribute.
+
+#### *string* hoverSelect ***optional***
+* By default, hovering over an option causes it to be selected.
 
 #### *function* onComplete(*event*, *completedInputValue*) ***optional***
 Fires when the user is attempting to complete the input element's hint. If there is no hint, it will not be called.
