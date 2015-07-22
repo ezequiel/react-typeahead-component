@@ -209,7 +209,7 @@ module.exports = React.createClass({
 
         return (
             <ul id={_this.optionsId}
-				ref='dropdown'
+                ref='dropdown'
                 role='listbox'
                 aria-hidden={!isDropdownVisible}
                 style={{
@@ -433,7 +433,7 @@ module.exports = React.createClass({
                             }
 
                             optionData = props.options[selectedIndex];
-							// Make selected option always scroll to visible
+                            // Make selected option always scroll to visible
                             dropdown = React.findDOMNode(_this.refs.dropdown);
                             selectedOption = dropdown.children[selectedIndex];
                             optionOffsetTop = selectedOption.offsetTop;
