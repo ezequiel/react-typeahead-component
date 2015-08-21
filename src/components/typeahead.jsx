@@ -11,6 +11,7 @@ module.exports = React.createClass({
 
     propTypes: process.env.NODE_ENV === 'production' ? {} : {
         inputId: React.PropTypes.string,
+        inputName: React.PropTypes.string,
         className: React.PropTypes.string,
         autoFocus: React.PropTypes.bool,
         hoverSelect: React.PropTypes.bool,
@@ -179,6 +180,7 @@ module.exports = React.createClass({
                     onChange={_this.handleChange}
                     onKeyDown={_this.handleKeyDown}
                     id={props.inputId}
+                    name={props.inputName}
                     autoFocus={props.autoFocus}
                     placeholder={props.placeholder}
                     onSelect={props.onSelect}
