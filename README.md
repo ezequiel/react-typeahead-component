@@ -141,6 +141,9 @@ For example, this allows us to associate a label with the Typeahead's input elem
 />
 ```
 
+#### *string* inputName ***optional***
+* This input name is used for the Typeahead's input element. Useful if the Typeahead happens to be inside of a `form` element.
+
 #### *string* className ***optional***
 * This class name is used for the Typeahead's container.
 
