@@ -9,6 +9,16 @@ var React = require('react'),
 module.exports = React.createClass({
     displayName: 'Typeahead',
 
+    statics: {
+        getInstanceCount: (function() {
+            var count = 0;
+
+            return function() {
+                return ++count;
+            };
+        }())
+    },
+
     propTypes: process.env.NODE_ENV === 'production' ? {} : {
         inputId: React.PropTypes.string,
         inputName: React.PropTypes.string,
@@ -76,7 +86,7 @@ module.exports = React.createClass({
 
     componentWillMount: function() {
         var _this = this,
-            uniqueId = new Date().getTime();
+            uniqueId = this.constructor.getInstanceCount();
 
         _this.userInputValue = null;
         _this.previousInputValue = null;
