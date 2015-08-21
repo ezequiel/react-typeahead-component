@@ -209,6 +209,7 @@ module.exports = React.createClass({
 
         return (
             <ul id={_this.optionsId}
+                ref='dropdown'
                 role='listbox'
                 aria-hidden={!isDropdownVisible}
                 style={{
@@ -418,7 +419,10 @@ module.exports = React.createClass({
                     _this.navigate(dir, function() {
                         var selectedIndex = _this.state.selectedIndex,
                             previousInputValue = _this.previousInputValue,
-                            optionData = previousInputValue;
+                            optionData = previousInputValue,
+                            optionOffsetTop = 0,
+                            selectedOption,
+                            dropdown;
 
                         // We're currently on an option.
                         if (selectedIndex >= 0) {
@@ -429,6 +433,14 @@ module.exports = React.createClass({
                             }
 
                             optionData = props.options[selectedIndex];
+                            // Make selected option always scroll to visible
+                            dropdown = React.findDOMNode(_this.refs.dropdown);
+                            selectedOption = dropdown.children[selectedIndex];
+                            optionOffsetTop = selectedOption.offsetTop;
+                            if(optionOffsetTop + selectedOption.clientHeight > dropdown.clientHeight ||
+                                optionOffsetTop < dropdown.scrollTop) {
+                                dropdown.scrollTop = optionOffsetTop;
+                            }
                         }
 
                         props.onOptionChange(event, optionData, selectedIndex);
