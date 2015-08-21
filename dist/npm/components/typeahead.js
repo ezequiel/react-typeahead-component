@@ -9,8 +9,19 @@ var React = require('react'),
 module.exports = React.createClass({
     displayName: 'Typeahead',
 
+    statics: {
+        getInstanceCount: (function() {
+            var count = 0;
+
+            return function() {
+                return ++count;
+            };
+        }())
+    },
+
     propTypes: process.env.NODE_ENV === 'production' ? {} : {
         inputId: React.PropTypes.string,
+        inputName: React.PropTypes.string,
         className: React.PropTypes.string,
         autoFocus: React.PropTypes.bool,
         hoverSelect: React.PropTypes.bool,
@@ -75,7 +86,7 @@ module.exports = React.createClass({
 
     componentWillMount: function() {
         var _this = this,
-            uniqueId = new Date().getTime();
+            uniqueId = this.constructor.getInstanceCount();
 
         _this.userInputValue = null;
         _this.previousInputValue = null;
@@ -179,6 +190,7 @@ module.exports = React.createClass({
                     onChange: _this.handleChange,
                     onKeyDown: _this.handleKeyDown,
                     id: props.inputId,
+                    name: props.inputName,
                     autoFocus: props.autoFocus,
                     placeholder: props.placeholder,
                     onSelect: props.onSelect,
@@ -209,6 +221,7 @@ module.exports = React.createClass({
 
         return (
             React.createElement("ul", {id: _this.optionsId,
+                ref: "dropdown",
                 role: "listbox",
                 "aria-hidden": !isDropdownVisible,
                 style: {
@@ -418,7 +431,10 @@ module.exports = React.createClass({
                     _this.navigate(dir, function() {
                         var selectedIndex = _this.state.selectedIndex,
                             previousInputValue = _this.previousInputValue,
-                            optionData = previousInputValue;
+                            optionData = previousInputValue,
+                            optionOffsetTop = 0,
+                            selectedOption,
+                            dropdown;
 
                         // We're currently on an option.
                         if (selectedIndex >= 0) {
@@ -429,6 +445,14 @@ module.exports = React.createClass({
                             }
 
                             optionData = props.options[selectedIndex];
+                            // Make selected option always scroll to visible
+                            dropdown = React.findDOMNode(_this.refs.dropdown);
+                            selectedOption = dropdown.children[selectedIndex];
+                            optionOffsetTop = selectedOption.offsetTop;
+                            if(optionOffsetTop + selectedOption.clientHeight > dropdown.clientHeight ||
+                                optionOffsetTop < dropdown.scrollTop) {
+                                dropdown.scrollTop = optionOffsetTop;
+                            }
                         }
 
                         props.onOptionChange(event, optionData, selectedIndex);
