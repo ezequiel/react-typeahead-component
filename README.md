@@ -277,7 +277,7 @@ Don't see your prop? [Create an issue](https://github.com/ezequiel/react-typeahe
 
 Testing
 -------
-The tests are written using [mocha](https://github.com/mochajs/mocha), and ran using [Karma](https://github.com/karma-runner/karma). Run the command `npm test` to perform a single run of the tests in PhantomJS, and `npm test:dev` to debug the tests in Chrome.
+The tests are written using [mocha](https://github.com/mochajs/mocha), and ran using [Karma](https://github.com/karma-runner/karma). Run the command `npm test` to perform a single run of the tests in PhantomJS, and `npm run test:dev` to debug the tests in Chrome.
 
 Issues
 ------
