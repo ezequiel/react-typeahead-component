@@ -167,12 +167,6 @@ Fires when the user is attempting to complete the input element's hint. If there
 
 This function is called when the user presses the `ArrowRight`, `Tab`, or `End` keys. `ArrowLeft` is used instead of `ArrowRight` **if** the input value is RTL.
 
-#### *function* onDropdownOpen() ***optional***
-* Fires when the dropdown is opened. The dropdown opens as soon as something is typed, or up/down arrow keys are pressed, or when the input is focused.
-
-#### *function* onDropdownClose() ***optional***
-* Fires when the dropdown is closed. The dropdown may be closed when `Escape` or `Enter` is pressed, or if any option is clicked on, or if anywhere outside the Typeahead is clicked.
-
 **Example**:
 
 ```jsx
@@ -187,6 +181,12 @@ handleComplete: function(event, completedInputValue) {
     onComplete={this.handleComplete}
 />
 ```
+
+#### *function* onDropdownOpen() ***optional***
+* Fires when the dropdown is opened. The dropdown opens as soon as something is typed, or up/down arrow keys are pressed, or when the input is focused.
+
+#### *function* onDropdownClose() ***optional***
+* Fires when the dropdown is closed. The dropdown may be closed when `Escape` or `Enter` is pressed, or if any option is clicked on, or if anywhere outside the Typeahead is clicked.
 
 #### *function* onChange(*event*) ***optional***
 * Fires when a change occurs on the input element.
@@ -211,16 +211,13 @@ If no option is selected, `optionData` is the input value, and `selectedIndex` i
 #### *function* onBlur(*event*) ***optional***
 * Fires when the input element is blurred.
 
-#### *function* onBlur(*event*) ***optional***
-* Fires when the input element is blurred.
-
 #### *function* onSelect(*event*) ***optional***
 * Fires when the input element's text is selected.
 
-#### *function* onOptionClick(*event*, index, optionData) ***optional***
+#### *function* onOptionClick(*event*, optionData, index) ***optional***
 * Fires when an option is clicked. `optionData` is the option that was clicked.
 
-#### *function* onOptionChange(*event*, index, optionData) ***optional***
+#### *function* onOptionChange(*event*, optionData, index) ***optional***
 * Fires when the user arrows up or down to an option. It is also called if the user arrows back to the input element, and in that case `index` is `-1`. `optionData` is the option, or input text, data that has been navigated to.
 
 #### *function* handleHint(inputValue, options) ***optional***
@@ -280,7 +277,7 @@ Don't see your prop? [Create an issue](https://github.com/ezequiel/react-typeahe
 
 Testing
 -------
-The tests are written using [mocha](https://github.com/mochajs/mocha), and ran using [Karma](https://github.com/karma-runner/karma). Run the command `npm test` to perform a single run of the tests in PhantomJS, and `npm test:dev` to debug the tests in Chrome.
+The tests are written using [mocha](https://github.com/mochajs/mocha), and ran using [Karma](https://github.com/karma-runner/karma). Run the command `npm test` to perform a single run of the tests in PhantomJS, and `npm run test:dev` to debug the tests in Chrome.
 
 Issues
 ------

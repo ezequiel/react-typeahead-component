@@ -26,8 +26,8 @@ module.exports = React.createClass({
     render: function() {
         return (
             React.createElement("span", {
-                role: "status",
-                "aria-live": "polite",
+                role: "status", 
+                "aria-live": "polite", 
                 style: {
                     left: '-9999px',
                     position: 'absolute'
