@@ -992,6 +992,25 @@ describe('Typeahead', function() {
     });
 
     describe('#handleOptionClick', function() {
+        it('should call `focus`', function() {
+            var typeaheadInstance = TestUtils.renderIntoDocument(
+                    <Typeahead
+                        inputValue='una'
+                        handleHint={function() {
+                            return 'unabashedly';
+                        }}
+                    />
+                );
+            var focus = sinon.spy(typeaheadInstance, 'focus');
+
+            // Put Typeahead in a state where it can be closed.
+            typeaheadInstance.handleClick();
+
+            typeaheadInstance.handleOptionClick();
+
+            expect(focus).to.have.been.called.once;
+        });
+
         it('should hide the hint', function() {
             var typeaheadInstance = TestUtils.renderIntoDocument(
                     <Typeahead

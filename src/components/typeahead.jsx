@@ -408,7 +408,7 @@ module.exports = React.createClass({
             }
             break;
         case 'Enter':
-            input.blur();
+            _this.focus();
             _this.hideHint();
             _this.hideDropdown();
             break;
@@ -475,6 +475,7 @@ module.exports = React.createClass({
         var _this = this,
             props = _this.props;
 
+        _this.focus();
         _this.hideHint();
         _this.hideDropdown();
         _this.setSelectedIndex(selectedIndex);
