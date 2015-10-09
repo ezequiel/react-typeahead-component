@@ -1,6 +1,7 @@
 var Rx = require('rx');
 var JSONP = require('jsonp');
 var NETFLIX_API_ENDPOINT = "http://dvd.netflix.com/JSON/AutoCompleteSearch?type=grouped";
+var Promise = require('ypromise');
 
 var cache = {
     '': []

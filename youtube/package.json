@@ -9,7 +9,6 @@
   "author": "Ezequiel Rodriguez",
   "license": "MIT",
   "devDependencies": {
-    "object-assign": "^3.0.0",
     "reactify": "^1.1.1",
     "watchify": "^3.2.1"
   },
@@ -20,7 +19,9 @@
     "jsonp": "^0.2.0",
     "keymirror": "^0.1.1",
     "lodash.throttle": "^3.0.2",
+    "object-assign": "^4.0.1",
     "react": "^0.13.3",
-    "react-typeahead-component": "^0.5.0"
+    "react-typeahead-component": "^0.5.0",
+    "ypromise": "^0.3.0"
   }
 }

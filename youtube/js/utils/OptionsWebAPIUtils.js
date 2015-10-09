@@ -1,5 +1,6 @@
 var JSONP = require('jsonp');
 var YOUTUBE_API_ENDPOINT = "https://clients1.google.com/complete/search?client=youtube&ds=yt";
+var Promise = require('ypromise');
 
 var cache = {
     '': []
