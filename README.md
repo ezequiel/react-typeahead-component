@@ -1,7 +1,7 @@
 Typeahead, written using the React.js library.
 ==============================================
 
-NOTE: No longer in development. Please fork.
+**NOTE: No longer in development. Please fork.**
 
 Features
 ========
